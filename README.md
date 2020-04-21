@@ -1,2 +1,2 @@
 # Chessapp
-A chess game using JS and Lichess API
+Web app for chess using JS and Lichess API
