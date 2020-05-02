@@ -32,7 +32,6 @@ function onDrop (source, target) {
   // illegal move
   if (move === null) return 'snapback'
 
-  updateStatus()
 }
 
 // update the board position after the piece snap
@@ -41,36 +40,6 @@ function onSnapEnd () {
   board.position(game.fen())
 }
 
-function updateStatus () {
-  var status = ''
-
-  var moveColor = 'White'
-  if (game.turn() === 'b') {
-    moveColor = 'Black'
-  }
-
-  // checkmate?
-  if (game.in_checkmate()) {
-    status = 'Game over, ' + moveColor + ' is in checkmate.'
-  }
-
-  // draw?
-  else if (game.in_draw()) {
-    status = 'Game over, drawn position'
-  }
-
-  // game still on
-  else {
-    status = moveColor + ' to move'
-
-    // check?
-    if (game.in_check()) {
-      status += ', ' + moveColor + ' is in check'
-    }
-  }
-
- 
-}
 
 var config = {
   draggable: true,
@@ -80,9 +49,6 @@ var config = {
   onSnapEnd: onSnapEnd
 }
 board = Chessboard('myBoard', config)
-
-updateStatus()
-
 
 
 
