@@ -1,3 +1,7 @@
+
+Cloned from below for personal chess website
+
+
 ### Stockfish.js
 
 <a href="https://github.com/nmrugg/stockfish.js">Stockfish.js</a> is a pure JavaScript implementation of <a href="https://github.com/official-stockfish/Stockfish">Stockfish</a>, the world's strongest chess engine.
