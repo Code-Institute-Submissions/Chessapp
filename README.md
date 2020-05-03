@@ -1,2 +1,0 @@
-# Chessapp
-Run stockfish example
