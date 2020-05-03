@@ -51,5 +51,3 @@ var config = {
 board = Chessboard('myBoard', config)
 
 
-
-
