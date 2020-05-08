@@ -13,6 +13,8 @@ function engineGame(options) {
     var isEngineRunning = false;
     var evaluation_el = document.getElementById("evaluation");
     var announced_game_over;
+
+    
     // do not pick up pieces if the game is over
     // only pick up pieces for White
     var onDragStart = function(source, piece, position, orientation) {
