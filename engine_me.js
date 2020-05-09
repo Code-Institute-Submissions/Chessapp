@@ -1,7 +1,9 @@
 // Initiate Game Variables ::
+//No clock implemented
 
 
-var piece_colour="w";
+
+var player_colour="w";
 
 
 //Initiate engine and Chess js library 
@@ -13,13 +15,33 @@ var piece_colour="w";
 
 
  // Check if I can post message to the engine and recieve something back :
- var message_engine=stockfish_engine.postMessage('go depth 15');
+ var message_engine=stockfish_engine.postMessage("position fen rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR b KQkq - 0 1"
+
+);
+ var message_engine=stockfish_engine.postMessage("go movetime 15000")
+
   console.log("Posting message"+message_engine)
  // get output of the engine message 
  
  stockfish_engine.onmessage = function(event) {
-  console.log(event.data);
-};
+     var line
+    if (event && typeof event === "object") {
+            line = event.data;
+        } else {
+            line = event;
+        }
+        console.log("Reply: " + line)
+        if(line == 'uciok') {
+                 console.log("engine loading")
+            engineStatus.engineLoaded = true;
+        } else if(line == 'readyok') {
+            engineStatus.engineReady = true;
+
+             console.log("engine ready")
+        } else {   console.log("engine not playing") }
+            };
+        
+
 
 
 
@@ -27,16 +49,15 @@ var piece_colour="w";
 " Define generic functions   to get the chess board ready before  start playing------------------------------------------------"
 
 
-
 // Function from chessbaord.js library on when to pick pieces
 function onDragStart (source, piece, position, orientation) {
   
 
   // test my arrow skills
-    const piece_colour_func =(piece_colour) =>(piece_colour=="w")?  /^b/ : /^w/
+    const player_colour_func =(player_colour) =>(player_colour=="w")?  /^b/ : /^w/
 
     // At the start of game: do not pick up pieces if the game is over or the wrong colour
-  if (chess_game.game_over() || piece.search(piece_colour_func(piece_colour))!== -1){
+  if (chess_game.game_over() || piece.search(player_colour_func(player_colour))!== -1){
 
     return false;
 
@@ -47,46 +68,95 @@ function onDragStart (source, piece, position, orientation) {
 
 // Function from Chessboard.js to  only allow legal moves :
 
-function onDrop (source, target) {
-  // see if the move is legal
-  var move = game.move({
-    from: source,
-    to: target,
-    promotion: 'q' // NOTE: always promote to a queen for example simplicity
-  })
-
-  // illegal move
-  if (move === null) return 'snapback'
-
-  updateStatus()
-}
-
 
  var onDrop = function(source, target) {
         // see if the move is legal
-        var move = game.move({
+        var move = chess_game.move({
             from: source,
-            to: target,
-            promotion: document.getElementById("promote").value // Choose a promotable piece 
+            to: target
+            //Add promotion later
         });
 
         // illegal move
         if (move === null) return 'snapback';
 
-        Get_next_move();
+        updateStatus();
     };
+
+/**
+ * Get chess move from  game history send it engine
+ * get correspoind move from engine
+ * make the move on chess baord library  and add to chess history?
+ * 
+ * 
+ * 
+ * 
+ * 
+ */    
+
+
+var get_move_from_history= function(){
+
+
+}
+
+
+// Using function decleartions , so functions is hoisted for  the above  ( use customChessboard js library function)?
+
+
+function updateStatus () {
+  var status = ''
+
+  // get the tuurn and reset player colour
+  if (chess_game.turn() === 'b') {
+    player_colour = 'b'
+  }else{
+      player_colour="w"
+  }
+
+  // checkmate?
+  if (chess_game.in_checkmate()) {
+    status = 'chess_game over, ' + player_colour + ' is in checkmate.'
+  }
+
+  // draw?
+  else if (chess_game.in_draw()) {
+    status = 'chess_game over, drawn position'
+  }
+
+  // chess_game still on
+  else {
+    status = player_colour + ' to move'
+
+    // check?
+    if (chess_game.in_check()) {
+      status += ', ' + player_colour + ' is in check'
+    }
+  }
+
+}
+
+//------------------------------------------------------- Functions to 
+
+ function Get_next_move(){
+     
+
+     // workout whoseturn is it (player | engine)
+
+     // get move history and 
+      
+     // get the corresponding move  and return 
+     
+
+
+
+ }
 
     // Get the updated position if illegal move
     
-    var onSnapEnd = function() {
-        board.position(game.fen());
-    };
-
-
-
-
-
-
+var onSnapEnd = function() {
+        myboard.position(chess_game.fen());
+  };
 
 
 
@@ -101,7 +171,12 @@ var config = {
 
 myboard = new ChessBoard('myboard', config);
 
+// Set the correct colour for player2
+updateStatus();
+
 console.log("Board"+ myboard.position())
+
+// Reset colour and staru after 
 
 
 function moves_by_user(){
