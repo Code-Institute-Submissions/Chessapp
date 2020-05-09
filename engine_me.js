@@ -4,10 +4,7 @@
 var piece_colour="w";
 
 
-
-
 //Initiate engine and Chess js library 
-
 
 //  create a new chess constructor from the chessJs lib
  const  chess_game =Chess();
@@ -27,11 +24,11 @@ var piece_colour="w";
 
 
 
-///  Define generic functions  to get  moves played by the user and posting it to engine:
+" Define generic functions   to get the chess board ready before  start playing------------------------------------------------"
 
 
 
-// Function from chessbaord library on when to pick pieces
+// Function from chessbaord.js library on when to pick pieces
 function onDragStart (source, piece, position, orientation) {
   
 
@@ -48,20 +45,63 @@ function onDragStart (source, piece, position, orientation) {
 
 }
 
+// Function from Chessboard.js to  only allow legal moves :
 
- 
+function onDrop (source, target) {
+  // see if the move is legal
+  var move = game.move({
+    from: source,
+    to: target,
+    promotion: 'q' // NOTE: always promote to a queen for example simplicity
+  })
+
+  // illegal move
+  if (move === null) return 'snapback'
+
+  updateStatus()
+}
+
+
+ var onDrop = function(source, target) {
+        // see if the move is legal
+        var move = game.move({
+            from: source,
+            to: target,
+            promotion: document.getElementById("promote").value // Choose a promotable piece 
+        });
+
+        // illegal move
+        if (move === null) return 'snapback';
+
+        Get_next_move();
+    };
+
+    // Get the updated position if illegal move
+    
+    var onSnapEnd = function() {
+        board.position(game.fen());
+    };
+
+
+
+
+
+
+
+
 
 var config = {
   draggable: true,
   position: 'start',
-  onDragStart: onDragStart,
-  onDrop: onDrop,
+  onDragStart :onDragStart,
+  onDrop:onDrop,
   onSnapEnd: onSnapEnd
 }
 
 
-myboard = new ChessBoard('board', config);
+myboard = new ChessBoard('myboard', config);
 
+console.log("Board"+ myboard.position())
 
 
 function moves_by_user(){
