@@ -1,3 +1,5 @@
+//** Adapted Example file fromstockfish js */
+
 // Initiate Game Variables ::
 //No clock implemented
 
@@ -5,6 +7,22 @@
 
 var player_colour="w";
 var engineStatus = {};
+var Game_over=false;
+
+
+
+var config = {
+  draggable: true,
+  position: 'start',
+  onDragStart :onDragStart,
+  onDrop:onDrop,
+  onSnapEnd: onSnapEnd
+}
+
+
+myboard = new ChessBoard('myboard', config);
+
+
 
 //Initiate engine and Chess js library 
 
@@ -29,6 +47,19 @@ var engineStatus = {};
 
  // Start a game with the engine :
 
+
+    // Start a new game , display the status of the engine  add a couple of switches to monitor the engine statuses
+    Send_command('ucinewgame');
+    Send_command('isready');
+    engineStatus.engineReady = false;
+    engineStatus.search = null;
+    EngineStatus(); //Initial call should be not ready 
+    get_move_engine();// Initial call , if player "w" => none , else get move for stockfish
+    Game_over = false;
+
+
+
+
  function Send_command(cmd) {
         console.log("UCI: " + cmd); // In accordance with engine-interface.txt
         
@@ -44,14 +75,44 @@ function EngineStatus(event){
 
 }
 
-    // Start a new game , display the status of the engine  add a couple of switches to monitor the engine statuses
-    Send_command('ucinewgame');
-    Send_command('isready');
-    engineStatus.engineReady = false;
-    engineStatus.search = null;
-    EngineStatus(); //Initial call should be not ready 
-    Get_next_moves();
-    Game_over = false;
+
+
+function get_move_engine(){
+
+console.log("Board"+ myboard.position())
+   // console.log(myboard)
+    // set current board position using chessboard js library:
+//    myboard.position(chess_game.fen());
+
+
+    // Using Chess.js , 
+        var moves = '';
+        var game_history = chess_game.history({verbose: true});
+        
+    // Get the move history and parse it to a string for uci protocol
+    (game_history).forEach(s => moves+=' '+s.from+s.to+(s.promotion ? s.promotion : ''));
+
+    console.log(moves)
+
+    // Pass this to a the engine:
+        // if engines turn and game not over
+
+        if((chess_game.turn()!=player_colour) && (!Game_over)){
+
+
+            // post  the message
+               Send_command('position startpos moves' + moves);
+  
+
+
+        }
+
+}
+
+
+
+// Function to post and evaluate engine messagess
+
 
 
 
@@ -64,7 +125,7 @@ function EngineStatus(event){
     // What is the resposnse?
     console.log(" Engine responds with : " + engine_reply)
     
-    // check multitude of cases :
+    // check multitude of cases  and set corresponding status of engine:
 
     if(engine_reply == 'uciok') {
                  console.log("engine loading")
@@ -76,7 +137,11 @@ function EngineStatus(event){
         } else {   
             
             
-            console.log("engine not playing | Has made  a move") 
+            console.log("engine not playing | Has made  a move")
+            
+            // Function to get the move from engine by getting history or board poiitions
+
+            get_move_engine();
 
 
 }
@@ -110,7 +175,7 @@ function onDragStart (source, piece, position, orientation) {
 // Function from Chessboard.js to  only allow legal moves :
 
 
- var onDrop = function(source, target) {
+ function onDrop (source, target) {
         // see if the move is legal
         var move = chess_game.move({
             from: source,
@@ -176,24 +241,13 @@ function updateStatus () {
  
     // Get the updated position if illegal move
     
-var onSnapEnd = function() {
+ function onSnapEnd() {
         myboard.position(chess_game.fen());
   };
 
 
-
-var config = {
-  draggable: true,
-  position: 'start',
-  onDragStart :onDragStart,
-  onDrop:onDrop,
-  onSnapEnd: onSnapEnd
-}
-
-
-myboard = new ChessBoard('myboard', config);
-
 // Set the correct colour for player2
 updateStatus();
+
 
 console.log("Board"+ myboard.position())
