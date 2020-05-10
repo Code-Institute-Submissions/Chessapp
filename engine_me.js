@@ -4,7 +4,7 @@
 
 
 var player_colour="w";
-
+var engineStatus = {};
 
 //Initiate engine and Chess js library 
 
@@ -13,7 +13,7 @@ var player_colour="w";
  // create a new construcotr for the stockfish engine using a webworker:
  const stockfish_engine=new Worker('stockfish.js');
 
-
+/** 
  // Check if I can post message to the engine and recieve something back :
  var message_engine=stockfish_engine.postMessage("position fen rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR b KQkq - 0 1"
 
@@ -23,26 +23,67 @@ var player_colour="w";
   console.log("Posting message"+message_engine)
  // get output of the engine message 
  
+
+ */
+
+
+ // Start a game with the engine :
+
+ function Send_command(cmd) {
+        console.log("UCI: " + cmd); // In accordance with engine-interface.txt
+        
+        (stockfish_engine).postMessage(cmd);
+    }
+
+function EngineStatus(event){
+
+    // based on engine output attach correct values to vars
+
+    // what is the current statuse of the engine:
+    (engineStatus.engineReady) ? console.log(" Engine-status : Engine is ready ") : console.log("Engine status :Engine not ready") 
+
+}
+
+    // Start a new game , display the status of the engine  add a couple of switches to monitor the engine statuses
+    Send_command('ucinewgame');
+    Send_command('isready');
+    engineStatus.engineReady = false;
+    engineStatus.search = null;
+    EngineStatus(); //Initial call should be not ready 
+    Get_next_moves();
+    Game_over = false;
+
+
+
  stockfish_engine.onmessage = function(event) {
-     var line
-    if (event && typeof event === "object") {
-            line = event.data;
-        } else {
-            line = event;
-        }
-        console.log("Reply: " + line)
-        if(line == 'uciok') {
+      var engine_reply
+    
+      //  Assign data from the engine if response is an object , else do some other parsing
+    (event && typeof event === "object") ? engine_reply = event.data : engine_reply = event;
+    
+    // What is the resposnse?
+    console.log(" Engine responds with : " + engine_reply)
+    
+    // check multitude of cases :
+
+    if(engine_reply == 'uciok') {
                  console.log("engine loading")
             engineStatus.engineLoaded = true;
-        } else if(line == 'readyok') {
+        } else if(engine_reply == 'readyok') {
             engineStatus.engineReady = true;
 
              console.log("engine ready")
-        } else {   console.log("engine not playing") }
-            };
-        
+        } else {   
+            
+            
+            console.log("engine not playing | Has made  a move") 
 
 
+}
+// Get the new engine status after this :
+EngineStatus();
+
+};
 
 
 
@@ -95,12 +136,6 @@ function onDragStart (source, piece, position, orientation) {
  */    
 
 
-var get_move_from_history= function(){
-
-
-}
-
-
 // Using function decleartions , so functions is hoisted for  the above  ( use customChessboard js library function)?
 
 
@@ -138,20 +173,7 @@ function updateStatus () {
 
 //------------------------------------------------------- Functions to 
 
- function Get_next_move(){
-     
-
-     // workout whoseturn is it (player | engine)
-
-     // get move history and 
-      
-     // get the corresponding move  and return 
-     
-
-
-
- }
-
+ 
     // Get the updated position if illegal move
     
 var onSnapEnd = function() {
@@ -175,14 +197,3 @@ myboard = new ChessBoard('myboard', config);
 updateStatus();
 
 console.log("Board"+ myboard.position())
-
-// Reset colour and staru after 
-
-
-function moves_by_user(){
-
-
-
-
-
-}
