@@ -6,8 +6,17 @@
 
 
 var player_colour="w";
+var stockfish_colour="b";
 var engineStatus = {};
 var Game_over=false;
+var stockfish_search_depth="";
+
+// access skill level elements:
+
+
+
+var skill_level = document.getElementById("skilllevel").value;
+
 
 
 
@@ -49,13 +58,19 @@ myboard = new ChessBoard('myboard', config);
 
 
     // Start a new game , display the status of the engine  add a couple of switches to monitor the engine statuses
+
+    stockfish_search_depth=set_search_depth(skill_level);
+    console.log("searching level:"+stockfish_search_depth)
     Send_command('ucinewgame');
     Send_command('isready');
     engineStatus.engineReady = false;
     engineStatus.search = null;
     EngineStatus(); //Initial call should be not ready 
     get_move_engine();// Initial call , if player "w" => none , else get move for stockfish
-    Game_over = false;
+
+
+
+//** Define  functions tosend  messages and recieve messages as well as statuses from the engine */
 
 
 
@@ -76,7 +91,21 @@ function EngineStatus(event){
 }
 
 
+function set_search_depth(skill_level){
 
+    // function to search different depth , otherwise takes too long
+if(skill_level==="Easy"){
+    stockfish_search_depth ="1";
+} else if(skill_level==="Medium") {
+
+    stockfish_search_depth="2";
+} else if (skill_level==="Hard"){
+
+    stockfish_search_depth="3";
+}
+return stockfish_search_depth;
+
+}
 function get_move_engine(){
 
 console.log("Board"+ myboard.position())
@@ -93,17 +122,23 @@ console.log("Board"+ myboard.position())
     (game_history).forEach(s => moves+=' '+s.from+s.to+(s.promotion ? s.promotion : ''));
 
     console.log(moves)
+    
+
 
     // Pass this to a the engine:
         // if engines turn and game not over
 
-        if((chess_game.turn()!=player_colour) && (!Game_over)){
+        if((chess_game.turn()==stockfish_colour) && (!Game_over)){
 
+
+            console.log("Posting message")
 
             // post  the message
                Send_command('position startpos moves' + moves);
   
-
+            //  Request analysis from the engine: /search depth set to default
+            
+              Send_command("go " +"depth "+stockfish_search_depth);
 
         }
 
@@ -141,7 +176,6 @@ console.log("Board"+ myboard.position())
             
             // Function to get the move from engine by getting history or board poiitions
 
-            get_move_engine();
 
 
 }
