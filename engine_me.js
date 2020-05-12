@@ -91,6 +91,22 @@ function EngineStatus(event){
 }
 
 
+//** function to parse engine reply to chessjs library */
+function parse_move_engine(engine_reply){
+   var match = engine_reply.match(/^bestmove ([a-h][1-8])([a-h][1-8])([qrbn])?/);
+
+    console.log("parsed move" +match)
+            /// Did the AI move?
+            if(match) {
+                chess_game.move({from: match[1], to: match[2], promotion: match[3]});
+                get_move_engine();
+            } 
+
+}
+
+
+
+
 function set_search_depth(skill_level){
 
     // function to search different depth , otherwise takes too long
@@ -106,7 +122,15 @@ if(skill_level==="Easy"){
 return stockfish_search_depth;
 
 }
+
+
+
+
+
 function get_move_engine(){
+
+    myboard.position(chess_game.fen());
+
 
 console.log("Board"+ myboard.position())
    // console.log(myboard)
@@ -174,9 +198,8 @@ console.log("Board"+ myboard.position())
             
             console.log("engine not playing | Has made  a move")
             
-            // Function to get the move from engine by getting history or board poiitions
-
-
+            // Functiontto parse engine move and  make the move using chess.js library
+                parse_move_engine(engine_reply)
 
 }
 // Get the new engine status after this :
@@ -210,6 +233,9 @@ function onDragStart (source, piece, position, orientation) {
 
 
  function onDrop (source, target) {
+
+
+
         // see if the move is legal
         var move = chess_game.move({
             from: source,
@@ -220,7 +246,7 @@ function onDragStart (source, piece, position, orientation) {
         // illegal move
         if (move === null) return 'snapback';
 
-        updateStatus();
+        get_move_engine();
     };
 
 /**
