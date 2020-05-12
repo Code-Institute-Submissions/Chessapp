@@ -1,5 +1,10 @@
 //** Adapted Example file fromstockfish js */
 
+
+
+
+
+
 // Initiate Game Variables ::
 //No clock implemented
 
@@ -10,12 +15,21 @@ var stockfish_colour="b";
 var engineStatus = {};
 var Game_over=false;
 var stockfish_search_depth="";
-
+var skill_level;
+var a;
 // access skill level elements:
+// default value
+
+$('#skilllevel').on('change', function () {
+    
+    skill_level= this.value;
+    
+    console.log("skill level changed:"+skill_level)
+
+});
 
 
-
-var skill_level = document.getElementById("skilllevel").value;
+(skill_level==undefined)? skill_level="Easy" : skill_level ;
 
 
 
@@ -59,7 +73,7 @@ myboard = new ChessBoard('myboard', config);
 
     // Start a new game , display the status of the engine  add a couple of switches to monitor the engine statuses
 
-    stockfish_search_depth=set_search_depth(skill_level);
+
     console.log("searching level:"+stockfish_search_depth)
     Send_command('ucinewgame');
     Send_command('isready');
@@ -128,6 +142,9 @@ return stockfish_search_depth;
 
 
 function get_move_engine(){
+
+    console.log("My skill level"+skill_level)
+        stockfish_search_depth=set_search_depth(skill_level);
 
     myboard.position(chess_game.fen());
 
