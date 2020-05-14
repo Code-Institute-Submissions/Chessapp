@@ -4,6 +4,7 @@
     <title>Chess App</title>
 <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/chessboard-1.0.0.min.css" />
+    <link rel="stylesheet" href="css/myboard.css" />
     <script src="js/jquery-1.10.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/chess.min.js"></script>
@@ -13,7 +14,35 @@
 <body>
 
 
-<div id="myboard" style="width: 400px">
+
+
+
+
+
+
+<div class="container ChessOptions" id="Chessoptions">
+
+  
+    <div class="row Chesstatus">
+
+
+                <label>Status:</label>
+                <div id="status"></div>
+
+
+    </div>
+
+
+    <div class="Skillevels">
+                <select id="skilllevel">
+                <option>Easy</option>
+                <option>Medium</option>
+                <option>Hard</option>
+                
+                </select>
+
+
+        </div>
 
 
 
@@ -24,12 +53,13 @@
 
 
 
-<select id="skilllevel">
-  <option>Easy</option>
-  <option>Medium</option>
-  <option>Hard</option>
-  
-</select>
+
+
+<div id="myboard" style="width: 400px">
+
+</div>
+
+
 <script src="engine_me.js"></script>
 
 

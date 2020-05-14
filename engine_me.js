@@ -9,7 +9,7 @@
 //No clock implemented
 
 
-
+var $status = $('#status')
 var player_colour="w";
 var stockfish_colour="b";
 var engineStatus = {};
@@ -31,6 +31,11 @@ $('#skilllevel').on('change', function () {
 
 (skill_level==undefined)? skill_level="Easy" : skill_level ;
 
+
+
+
+//Add jquery to pop up checkmate
+  
 
 
 
@@ -182,6 +187,7 @@ console.log("Board"+ myboard.position())
               Send_command("go " +"depth "+stockfish_search_depth);
 
         }
+        updateStatus();
 
 }
 
@@ -264,6 +270,8 @@ function onDragStart (source, piece, position, orientation) {
         if (move === null) return 'snapback';
 
         get_move_engine();
+        updateStatus();
+        
     };
 
 /**
@@ -281,19 +289,25 @@ function onDragStart (source, piece, position, orientation) {
 // Using function decleartions , so functions is hoisted for  the above  ( use customChessboard js library function)?
 
 
+
+
+
+
+
+
 function updateStatus () {
   var status = ''
 
-  // get the tuurn and reset player colour
+
+  var moveColor = 'White'
   if (chess_game.turn() === 'b') {
-    player_colour = 'b'
-  }else{
-      player_colour="w"
+    moveColor = 'Black'
   }
+
 
   // checkmate?
   if (chess_game.in_checkmate()) {
-    status = 'chess_game over, ' + player_colour + ' is in checkmate.'
+    status = 'chess_game over, ' + moveColor + ' is in checkmate.'
   }
 
   // draw?
@@ -303,14 +317,16 @@ function updateStatus () {
 
   // chess_game still on
   else {
-    status = player_colour + ' to move'
+    status = moveColor + ' to move'
 
     // check?
     if (chess_game.in_check()) {
-      status += ', ' + player_colour + ' is in check'
+      status += ', ' + moveColor + ' is in check'
     }
   }
+  $status.html(status)
 
+console.log("Game status "+status)
 }
 
 //------------------------------------------------------- Functions to 
