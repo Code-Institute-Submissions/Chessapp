@@ -1,9 +1,21 @@
 
 
+--- Javascript
 // Check mate message ?
 // Stalemate?
 // Promotion
 // Black for Engine
 // Keep track of pieces captured
+// Add Full difficulty level (depth upto 20)
+// add a wait timer before displayin status
+// Add a new game button
+// whose winnign the game
 
+--- HTML
+
+//Chess Front Page
+//Parameters to choose ?
+//Add footer for stockgfish j
+
+- CSS 
 

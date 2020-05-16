@@ -1,10 +1,6 @@
 //** Adapted Example file fromstockfish js */
 
 
-
-
-
-
 // Initiate Game Variables ::
 //No clock implemented
 
@@ -16,29 +12,6 @@ var engineStatus = {};
 var Game_over=false;
 var stockfish_search_depth="";
 var skill_level;
-var a;
-// access skill level elements:
-// default value
-
-$('#skilllevel').on('change', function () {
-    
-    skill_level= this.value;
-    
-    console.log("skill level changed:"+skill_level)
-
-});
-
-
-(skill_level==undefined)? skill_level="Easy" : skill_level ;
-
-
-
-
-//Add jquery to pop up checkmate
-  
-
-
-
 var config = {
   draggable: true,
   position: 'start',
@@ -49,6 +22,30 @@ var config = {
 
 
 myboard = new ChessBoard('myboard', config);
+
+
+
+/// Do some jquery----------------------------------------------
+
+var clicked_colour;
+// access skill level elements:
+// default value
+
+$('#skilllevel').on('change', function () {
+    
+    skill_level= this.value;
+    
+    console.log("skill level changed:"+skill_level)
+
+});
+(skill_level==undefined)? skill_level="Easy" : skill_level ;
+
+
+
+
+//**---------------------------------------------- */
+
+
 
 
 
@@ -187,6 +184,7 @@ console.log("Board"+ myboard.position())
               Send_command("go " +"depth "+stockfish_search_depth);
 
         }
+        // Update chess board
         updateStatus();
 
 }
@@ -239,11 +237,9 @@ EngineStatus();
 function onDragStart (source, piece, position, orientation) {
   
 
-  // test my arrow skills
-    const player_colour_func =(player_colour) =>(player_colour=="w")?  /^b/ : /^w/
-
+  
     // At the start of game: do not pick up pieces if the game is over or the wrong colour
-  if (chess_game.game_over() || piece.search(player_colour_func(player_colour))!== -1){
+  if (chess_game.game_over() || piece.search(player_colour)){
 
     return false;
 
@@ -344,3 +340,62 @@ updateStatus();
 
 
 console.log("Board"+ myboard.position())
+
+
+/// Add jquery----------------------------------
+
+
+
+
+// Add jquery to get player colour  and reassign stockfish colour:
+$(".colouroptions a").click( function() {
+    var clicked_colour = $(this).text();
+    console.log("player colour:"+player_colour +"Stockfish colour: "+stockfish_colour)
+    if (clicked_colour==="White"){
+        console.log(clicked_colour)
+        player_colour="w";
+        stockfish_colour="b";
+        console.log("playercolour:"+player_colour+"stockfishcolour:"+stockfish_colour)
+        myboard.destroy();
+        myboard = new ChessBoard('myboard', config);
+        // reset new game
+        //  create a new chess constructor from the chessJs lib
+        chess_game.reset();
+
+
+        Send_command('ucinewgame');
+        Send_command('isready');
+        engineStatus.engineReady = false;
+         engineStatus.search = null;
+        EngineStatus(); //Initial call should be not ready 
+        get_move_engine();// Initial call , if player "w" => none , else get move for stockfish
+
+        updateStatus();
+    }else{
+        player_colour="b";
+        stockfish_colour="w";
+        console.log("playercolour:"+player_colour+"stockfishcolour:"+stockfish_colour)
+
+        // reset game:
+        //  create a new chess constructor from the chessJs lib
+        chess_game.reset();
+
+        // reset board  and send command first for stockfish
+        myboard.destroy();
+        myboard = new ChessBoard('myboard', config);
+        myboard.orientation("black");
+        console.log("searching level:"+stockfish_search_depth)
+        Send_command('ucinewgame');
+        Send_command('isready');
+        engineStatus.engineReady = false;
+         engineStatus.search = null;
+        EngineStatus(); //Initial call should be not ready 
+        get_move_engine();// Initial call , if player "w" => none , else get move for stockfish
+
+        updateStatus();
+
+
+
+    }
+});
+
