@@ -47,4 +47,7 @@ $("#newgame").click(function(){
 })
 
 
-/// Jquery to add promotion 
+/// Jquery and Js to add captired pieces to keep track : code from https://github.com/jhlywa/chess.js/issues/82
+
+
+

@@ -127,6 +127,7 @@ console.log("Board"+ myboard.position())
         }
         // Update chess board
         updateStatus();
+        gamehistory();
 
 }
 
@@ -209,6 +210,7 @@ function onDragStart (source, piece, position, orientation) {
 
         get_move_engine();
         updateStatus();
+        gamehistory();
         
     };
 
@@ -266,6 +268,66 @@ console.log("Game status "+status)
 updateStatus();
 
 
+/// Get history of captured pieces :
+
+function gamehistory(){
+// Using Chess.js , 
+        var moves = '';
+        var game_history = chess_game.history({verbose: true});
+        
+        captured_array=[];
+        for(i=0;i<game_history.length;i++){
+            
+            captured=game_history[i]["captured"] 
+            //  Get captured from the dictionary:
+            if (captured!= undefined){
+                   //get color of the capture:
+                   captured_color=game_history[i]["color"]
+                   // invert color to get captured color
+                   
+                    if(captured_color==="w"){
+                        captured_color="b"
+
+                    }else{
+                        captured_color="w"
+                    }
+
+                   captured=captured.toUpperCase();
+                   capture=captured_color+captured+".png"
+                   capture=capture.replace(/\s/g, '');
+
+                captured_array.push(capture)
+                console.log("Captured:"+captured_array)
+            }
+        }
+    
+
+// Add Jquery to append correct pieces to end 
+if (captured_array.length>0){
+
+
+    for(i=0;i++;i<captured_array.length){
+
+        function image() {
+            var img = document.createElement("IMG");
+            img.src = "img/chesspieces/wikipedia/"+captured_array[i];
+            $('#image').html(img); 
+        }
+
+    }
+
+}
+
+
+
+}
+
+
+
+
+
+
+
 
 /// Function to start a new game :
     function newgame(player_colour){
@@ -274,15 +336,11 @@ updateStatus();
        
 
         myboard.destroy();
-
-
-        
         myboard = new ChessBoard('myboard', config);
         myboard.orientation(player_colour);
         // reset new game
         //  create a new chess constructor from the chessJs lib
         chess_game.reset();
-
         Send_command('ucinewgame');
         Send_command('isready');
         engineStatus.engineReady = false;
@@ -290,6 +348,7 @@ updateStatus();
         EngineStatus(); //Initial call should be not ready 
         get_move_engine();// Initial call , if player "w" => none , else get move for stockfish
         updateStatus();
+
 
 
     }
