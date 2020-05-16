@@ -2,8 +2,8 @@
 
 --- Javascript
 // Check mate message ? (partially- need to render better)
-// Stalemate?
-// Promotion
+// Stalemate (done)
+// Promotion (promotion added to queen)
 // Black for Engine (done)
 // Keep track of pieces captured
 // Add Full difficulty level (depth upto 20) (partially- need to add full scale)
@@ -18,4 +18,10 @@
 //Add footer for stockgfish j
 
 - CSS 
+
+// Avaiable places to move on drag
+
+
+
+- Resposnive web design
 

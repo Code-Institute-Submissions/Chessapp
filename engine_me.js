@@ -12,6 +12,7 @@ var engineStatus = {};
 var Game_over=false;
 var stockfish_search_depth="";
 var skill_level;
+var clicked_colour;
 var config = {
   draggable: true,
   position: 'start',
@@ -25,70 +26,10 @@ myboard = new ChessBoard('myboard', config);
 
 
 
-/// Do some jquery----------------------------------------------
-
-var clicked_colour;
-// access skill level elements:
-// default value
-
-$('#skilllevel').on('change', function () {
-    
-    skill_level= this.value;
-    
-    console.log("skill level changed:"+skill_level)
-
-});
-(skill_level==undefined)? skill_level="Easy" : skill_level ;
-
-
-
-
-//**---------------------------------------------- */
-
-
-
-
-
-//Initiate engine and Chess js library 
-
-//  create a new chess constructor from the chessJs lib
- const  chess_game =Chess();
- // create a new construcotr for the stockfish engine using a webworker:
- const stockfish_engine=new Worker('stockfish.js');
-
-/** 
- // Check if I can post message to the engine and recieve something back :
- var message_engine=stockfish_engine.postMessage("position fen rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR b KQkq - 0 1"
-
-);
- var message_engine=stockfish_engine.postMessage("go movetime 15000")
-
-  console.log("Posting message"+message_engine)
- // get output of the engine message 
- 
-
- */
-
-
- // Start a game with the engine :
-
-
-    // Start a new game , display the status of the engine  add a couple of switches to monitor the engine statuses
-
-
-    console.log("searching level:"+stockfish_search_depth)
-    Send_command('ucinewgame');
-    Send_command('isready');
-    engineStatus.engineReady = false;
-    engineStatus.search = null;
-    EngineStatus(); //Initial call should be not ready 
-    get_move_engine();// Initial call , if player "w" => none , else get move for stockfish
-
-
-
 //** Define  functions tosend  messages and recieve messages as well as statuses from the engine */
+const  chess_game =Chess();
 
-
+ const stockfish_engine=new Worker('stockfish.js');
 
 
  function Send_command(cmd) {
@@ -258,7 +199,8 @@ function onDragStart (source, piece, position, orientation) {
         // see if the move is legal
         var move = chess_game.move({
             from: source,
-            to: target
+            to: target,
+            promotion: 'q'
             //Add promotion later
         });
 
@@ -291,8 +233,15 @@ function updateStatus () {
     status = 'chess_game over, drawn position'
   }
 
+  //stalemate
+  else if(chess_game.in_stalemate()){
+
+    status = 'chess_game over, stale mate!!'
+
+  }
+
   // chess_game still on
-  else {
+ else {
     status = moveColor + ' to move'
 
     // check?
@@ -320,8 +269,14 @@ updateStatus();
 
 /// Function to start a new game :
     function newgame(player_colour){
+         
+    // create a new construcotr for the stockfish engine using a webworker:
+       
 
         myboard.destroy();
+
+
+        
         myboard = new ChessBoard('myboard', config);
         myboard.orientation(player_colour);
         // reset new game
@@ -338,45 +293,13 @@ updateStatus();
 
 
     }
+
+
         
-
-/// Add jquery----------------------------------
-
+newgame("white");
 
 
 
-// Add jquery to get player colour  and reassign stockfish colour:
-$(".colouroptions a").click( function() {
-    var clicked_colour = $(this).text();
-    console.log("player colour:"+player_colour +"Stockfish colour: "+stockfish_colour)
-    if (clicked_colour==="White"){
-        console.log(clicked_colour)
-        player_colour="w";
-        stockfish_colour="b";
-        console.log("playercolour:"+player_colour+"stockfishcolour:"+stockfish_colour)
-
-        newgame();
-    
-    }else{
-        player_colour="b";
-        stockfish_colour="w";
-        console.log("playercolour:"+player_colour+"stockfishcolour:"+stockfish_colour)
-        newgame("black");
-    }
-
-
-    
-});
-
-// jquery for new game :
-$("#newgame").click(function(){
-    console.log("pressed new button")
-
-    newgame("white");
-
-
-
-})
 
 
 
