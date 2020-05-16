@@ -1,14 +1,14 @@
 
 
 --- Javascript
-// Check mate message ?
+// Check mate message ? (partially- need to render better)
 // Stalemate?
 // Promotion
-// Black for Engine
+// Black for Engine (done)
 // Keep track of pieces captured
-// Add Full difficulty level (depth upto 20)
+// Add Full difficulty level (depth upto 20) (partially- need to add full scale)
 // add a wait timer before displayin status
-// Add a new game button
+// Add a new game button  (done)
 // whose winnign the game
 
 --- HTML

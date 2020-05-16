@@ -270,26 +270,6 @@ function onDragStart (source, piece, position, orientation) {
         
     };
 
-/**
- * Get chess move from  game history send it engine
- * get correspoind move from engine
- * make the move on chess baord library  and add to chess history?
- * 
- * 
- * 
- * 
- * 
- */    
-
-
-// Using function decleartions , so functions is hoisted for  the above  ( use customChessboard js library function)?
-
-
-
-
-
-
-
 
 function updateStatus () {
   var status = ''
@@ -325,8 +305,6 @@ function updateStatus () {
 console.log("Game status "+status)
 }
 
-//------------------------------------------------------- Functions to 
-
  
     // Get the updated position if illegal move
     
@@ -339,8 +317,28 @@ console.log("Game status "+status)
 updateStatus();
 
 
-console.log("Board"+ myboard.position())
 
+/// Function to start a new game :
+    function newgame(player_colour){
+
+        myboard.destroy();
+        myboard = new ChessBoard('myboard', config);
+        myboard.orientation(player_colour);
+        // reset new game
+        //  create a new chess constructor from the chessJs lib
+        chess_game.reset();
+
+        Send_command('ucinewgame');
+        Send_command('isready');
+        engineStatus.engineReady = false;
+         engineStatus.search = null;
+        EngineStatus(); //Initial call should be not ready 
+        get_move_engine();// Initial call , if player "w" => none , else get move for stockfish
+        updateStatus();
+
+
+    }
+        
 
 /// Add jquery----------------------------------
 
@@ -356,46 +354,29 @@ $(".colouroptions a").click( function() {
         player_colour="w";
         stockfish_colour="b";
         console.log("playercolour:"+player_colour+"stockfishcolour:"+stockfish_colour)
-        myboard.destroy();
-        myboard = new ChessBoard('myboard', config);
-        // reset new game
-        //  create a new chess constructor from the chessJs lib
-        chess_game.reset();
 
-
-        Send_command('ucinewgame');
-        Send_command('isready');
-        engineStatus.engineReady = false;
-         engineStatus.search = null;
-        EngineStatus(); //Initial call should be not ready 
-        get_move_engine();// Initial call , if player "w" => none , else get move for stockfish
-
-        updateStatus();
+        newgame();
+    
     }else{
         player_colour="b";
         stockfish_colour="w";
         console.log("playercolour:"+player_colour+"stockfishcolour:"+stockfish_colour)
-
-        // reset game:
-        //  create a new chess constructor from the chessJs lib
-        chess_game.reset();
-
-        // reset board  and send command first for stockfish
-        myboard.destroy();
-        myboard = new ChessBoard('myboard', config);
-        myboard.orientation("black");
-        console.log("searching level:"+stockfish_search_depth)
-        Send_command('ucinewgame');
-        Send_command('isready');
-        engineStatus.engineReady = false;
-         engineStatus.search = null;
-        EngineStatus(); //Initial call should be not ready 
-        get_move_engine();// Initial call , if player "w" => none , else get move for stockfish
-
-        updateStatus();
-
-
-
+        newgame("black");
     }
+
+
+    
 });
+
+// jquery for new game :
+$("#newgame").click(function(){
+    console.log("pressed new button")
+
+    newgame("white");
+
+
+
+})
+
+
 
