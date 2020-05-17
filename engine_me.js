@@ -303,7 +303,7 @@ function gamehistory(){
     
 
 // Add Jquery to append correct pieces to end 
-if (captured_array.length>1){
+if (captured_array.length>0){
 
 
     console.log("captured array >0")
