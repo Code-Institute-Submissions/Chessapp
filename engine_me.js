@@ -305,18 +305,27 @@ function gamehistory(){
 // Add Jquery to append correct pieces to end 
 if (captured_array.length>0){
 
+    console.log("captured array >0")
 
-    for(i=0;i++;i<captured_array.length){
 
-        function image() {
-            var img = document.createElement("IMG");
-            img.src = "img/chesspieces/wikipedia/"+captured_array[i];
-            $('#image').html(img); 
-        }
+
+
+
+    
+
+
+    for(i=0;i<captured_array.length;i++){
+        console.log("captured array looping")
+                img_url="img/chesspieces/wikipedia/"+captured_array[i];
+                console.log("IMage url"+img_url)
+            $('.pieces').append('<img src=' + img_url + ' class="captured" />');
+             
+        
 
     }
 
 }
+
 
 
 
