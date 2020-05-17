@@ -269,7 +269,7 @@ updateStatus();
 
 
 /// Get history of captured pieces :
-    new_array=[];
+
 function gamehistory(){
 // Using Chess.js , 
         var moves = '';
@@ -308,7 +308,7 @@ if (captured_array.length>1){
 
     console.log("captured array >0")
 
-
+    //** Hack to check if array lenght changes and then append  the newest item */
     // first case empty array add captured :
         if(new_array.length==0){
 
@@ -364,15 +364,12 @@ if (captured_array.length>1){
 
 
 
-
-
-
-
 /// Function to start a new game :
     function newgame(player_colour){
          
     // create a new construcotr for the stockfish engine using a webworker:
        
+            new_array=[];// reset previous stored array
 
         myboard.destroy();
         myboard = new ChessBoard('myboard', config);
@@ -387,8 +384,11 @@ if (captured_array.length>1){
         EngineStatus(); //Initial call should be not ready 
         get_move_engine();// Initial call , if player "w" => none , else get move for stockfish
         updateStatus();
+        //$('.pieces').removeAttr('src')// Remove the src for the captured piecees
+        //location.reload();
+        $('.pieces > img').remove();
 
-
+        gamehistory();
 
     }
 
