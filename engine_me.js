@@ -269,7 +269,7 @@ updateStatus();
 
 
 /// Get history of captured pieces :
-
+    new_array=[];
 function gamehistory(){
 // Using Chess.js , 
         var moves = '';
@@ -303,18 +303,19 @@ function gamehistory(){
     
 
 // Add Jquery to append correct pieces to end 
-if (captured_array.length>0){
+if (captured_array.length>1){
+
 
     console.log("captured array >0")
 
 
+    // first case empty array add captured :
+        if(new_array.length==0){
 
+            new_array.splice(0, 0, captured_array);
 
-
-    
-
-
-    for(i=0;i<captured_array.length;i++){
+            console.log("Iniital array: ",new_array)
+                for(i=0;i<captured_array.length;i++){
         console.log("captured array looping")
                 img_url="img/chesspieces/wikipedia/"+captured_array[i];
                 console.log("IMage url"+img_url)
@@ -323,6 +324,35 @@ if (captured_array.length>0){
         
 
     }
+        }else{
+            if(new_array[0].length!=captured_array.length){
+
+                
+                
+                 new_array.splice(0, 0, captured_array);  
+                 
+                 console.log("Changed array from inital"+new_array)
+                 console.log("Captured array in changed array "+ captured_array)
+
+                
+                img_url="img/chesspieces/wikipedia/"+captured_array[captured_array.length-1];
+                console.log("IMage url"+img_url)
+                $('.pieces').append('<img src=' + img_url + ' class="captured" />');
+             
+        
+
+            
+        }
+
+    }
+
+
+
+
+
+
+
+    
 
 }
 
