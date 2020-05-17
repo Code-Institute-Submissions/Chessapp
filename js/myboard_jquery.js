@@ -41,7 +41,8 @@ $(".colouroptions a").click( function() {
 // jquery for new game :
 $("#newgame").click(function(){
     console.log("pressed new button")
-
+            player_colour="w";
+        stockfish_colour="b";
     newgame("white");
 
 })
