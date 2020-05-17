@@ -361,6 +361,25 @@ if (captured_array.length>1){
 
 }
 
+            new_array=[];// reset previous stored array
+
+        myboard.destroy();
+        myboard = new ChessBoard('myboard', config);
+        myboard.orientation(player_colour);
+        // reset new game
+        //  create a new chess constructor from the chessJs lib
+        chess_game.reset();
+        Send_command('ucinewgame');
+        Send_command('isready');
+        engineStatus.engineReady = false;
+         engineStatus.search = null;
+        EngineStatus(); //Initial call should be not ready 
+        get_move_engine();// Initial call , if player "w" => none , else get move for stockfish
+        updateStatus();
+        //$('.pieces').removeAttr('src')// Remove the src for the captured piecees
+        //location.reload();
+
+        gamehistory();
 
 
 
@@ -394,7 +413,7 @@ if (captured_array.length>1){
 
 
         
-newgame("white");
+//newgame("white");
 
 
 
