@@ -268,11 +268,11 @@ console.log("Game status "+status)
 updateStatus();
 
 
-/// Get history of captured pieces :
 
-function gamehistory(){
-// Using Chess.js , 
-        var moves = '';
+/// function for history of captured pieces:
+
+function captured_history(){
+       var moves = '';
         var game_history = chess_game.history({verbose: true});
         
         captured_array=[];
@@ -300,6 +300,21 @@ function gamehistory(){
                 console.log("Captured:"+captured_array)
             }
         }
+
+
+        return captured_array
+
+    
+}
+ 
+
+/// Get history of captured pieces :
+
+function gamehistory(){
+// Using Chess.js , 
+
+
+captured_array=captured_history();
     
 
 // Add Jquery to append correct pieces to end 
@@ -316,10 +331,35 @@ if (captured_array.length>0){
 
             console.log("Iniital array: ",new_array)
                 for(i=0;i<captured_array.length;i++){
-        console.log("captured array looping")
-                img_url="img/chesspieces/wikipedia/"+captured_array[i];
-                console.log("IMage url"+img_url)
-            $('.pieces').append('<img src=' + img_url + ' class="captured" />');
+                console.log("captured array looping")
+                 
+                 // get colour for the piece  :
+                    captured_piece_colour=captured_array[i][0].split(".")[0][0]
+
+                    // rendering top pieces
+                    if((captured_piece_colour=="b" && player_colour=="b") | (captured_piece_colour=="w" && player_colour=="w")){
+
+                        img_url="img/chesspieces/wikipedia/"+captured_array[i];
+                        console.log("IMage url"+img_url)
+                        $('.pieces_top').append('<img src=' + img_url + ' class="captured" />');
+
+
+
+                    } else{
+
+                        img_url="img/chesspieces/wikipedia/"+captured_array[i];
+                        console.log("IMage url"+img_url)
+                        $('.pieces_bottom').append('<img src=' + img_url + ' class="captured" />');
+
+
+
+
+                    }      
+
+
+
+
+
              
         
 
@@ -330,21 +370,36 @@ if (captured_array.length>0){
                 
                 
                  new_array.splice(0, 0, captured_array);  
-                 
-                 console.log("Changed array from inital"+new_array)
-                 console.log("Captured array in changed array "+ captured_array)
 
-                
-                img_url="img/chesspieces/wikipedia/"+captured_array[captured_array.length-1];
-                console.log("IMage url"+img_url)
-                $('.pieces').append('<img src=' + img_url + ' class="captured" />');
-             
-        
+
+                    captured_piece_colour=captured_array[captured_array.length-1][0].split(".")[0][0]
+
+                 // rendering top pieces
+                    if((captured_piece_colour=="b" && player_colour=="b") | (captured_piece_colour=="w" && player_colour=="w")){
+
+                        img_url="img/chesspieces/wikipedia/"+captured_array[captured_array.length-1];
+                        console.log("IMage url"+img_url)
+                        $('.pieces_top').append('<img src=' + img_url + ' class="captured" />');
+
+
+
+                    } else{
+
+                        img_url="img/chesspieces/wikipedia/"+captured_array[captured_array.length-1];
+                        console.log("IMage url"+img_url)
+                        $('.pieces_bottom').append('<img src=' + img_url + ' class="captured" />');
+
+
+
+
+                    } 
+                 
+
 
             
-        }
+            }
 
-    }
+         }
 
 
 
@@ -354,32 +409,10 @@ if (captured_array.length>0){
 
     
 
-}
-
-
+    }
 
 
 }
-
-            new_array=[];// reset previous stored array
-
-        myboard.destroy();
-        myboard = new ChessBoard('myboard', config);
-        myboard.orientation(player_colour);
-        // reset new game
-        //  create a new chess constructor from the chessJs lib
-        chess_game.reset();
-        Send_command('ucinewgame');
-        Send_command('isready');
-        engineStatus.engineReady = false;
-         engineStatus.search = null;
-        EngineStatus(); //Initial call should be not ready 
-        get_move_engine();// Initial call , if player "w" => none , else get move for stockfish
-        updateStatus();
-        //$('.pieces').removeAttr('src')// Remove the src for the captured piecees
-        //location.reload();
-
-        gamehistory();
 
 
 
@@ -405,11 +438,33 @@ if (captured_array.length>0){
         updateStatus();
         //$('.pieces').removeAttr('src')// Remove the src for the captured piecees
         //location.reload();
-        $('.pieces > img').remove();
-
+        $('.pieces_top > img').remove();
+        $('.pieces_bottom > img').remove();
         gamehistory();
 
     }
+
+
+
+//**------------------Play an initial game ------------------ */
+
+        new_array=[];// reset previous stored array
+        myboard.destroy();
+        myboard = new ChessBoard('myboard', config);
+        myboard.orientation(player_colour);
+        chess_game.reset();
+        Send_command('ucinewgame');
+        Send_command('isready');
+        engineStatus.engineReady = false;
+         engineStatus.search = null;
+        EngineStatus(); //Initial call should be not ready 
+        get_move_engine();// Initial call , if player "w" => none , else get move for stockfish
+        updateStatus();
+        //$('.pieces').removeAttr('src')// Remove the src for the captured piecees
+        //location.reload();
+
+        gamehistory();
+
 
 
         
