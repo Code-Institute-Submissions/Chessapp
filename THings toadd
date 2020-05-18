@@ -6,13 +6,13 @@
 // Promotion (promotion added to queen)
 // Black for Engine (done)
 // Keep track of pieces captured -
-                                - captured pieces on the correct side of the board?
-                                
+                                - captured pieces on the correct side of the board? -done
+
 // Add Full difficulty level (depth upto 20) (partially- need to add full scale)
 // add a wait timer before displayin status
 // Add a new game button  (done)
 // whose winnign the game--- (evaluation?)
-// bug black and then new game 
+// bug black and then new game (done)
 --- HTML
 
 //Chess Front Page
@@ -22,57 +22,7 @@
 - CSS 
 
 // Avaiable places to move on drag
-
+// change captured pieces size
 
 
 - Resposnive web design
-
-
-// Add Jquery to append correct pieces to end (only do jquery if pieces changed)
-if (captured_array.length>0){
-
-    new_array=[];
-
-    // first case empty array add captured :
-        if(new_array.length==0){
-
-            new_array.splice(0, 0, captured_array);
-
-            console.log("Iniital array: ",new_array)
-            for(i=0;i++;i<captured_array.length){
-
-                    function image() {
-                        var img = document.createElement("IMG");
-                        img.src = "img/chesspieces/wikipedia/"+captured_array[i];
-                        $('#image').html(img); 
-                    }
-
-
-            }
-
-        }else{
-                new_array.splice(0, 0, captured_array);
-            if(new_array[0].length!=captured_array.length){
-                
-                 new_array.splice(0, 0, captured_array);   
-
-                for(i=0;i++;i<captured_array.length){
-
-                    function image() {
-                        var img = document.createElement("IMG");
-                        img.src = "img/chesspieces/wikipedia/"+captured_array[i];
-                        $('#image').html(img); 
-                    }
-
-
-            }
-
-        }
-
-    
-
-
-
-    }
-
-}
