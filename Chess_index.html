@@ -17,7 +17,20 @@
 <body>
 
 
+
+
+
+<header>
+<div class="row Chess game">
+
+Play against Stock fish
+</div>
+</header>
+
+
 <div class="sidebar-wrap">
+
+
 
 
 <div class="sidebar ChessOptions" id="Chessoptions">
@@ -30,14 +43,7 @@
 
     </div>
       
-    <div class="row Chesstatus">
-
-
-                <label>Status:</label>
-                <div id="status"></div>
-
-
-    </div>
+    
 
 
     <div class="Skillevels">
@@ -75,8 +81,6 @@
 
 </div>
 
-
-
 <div class="container captured" style="width: 450px">
 
   <div class="pieces_top">
@@ -86,11 +90,29 @@
 
 </div>
 
-<div class="container chessboard">
+<div class="container chessboardandstatus">
 
+<div class="container row">
+<div class="col-lg-10 col-md-10 col-sm-10">
 <div id="myboard" style="width: 450px">
 </div>
+
 </div>
+
+<div class="col-lg-2 col-md-2 col-sm-2 Chesstatus">
+
+
+                <label>Status:</label>
+                <div id="status"></div>
+
+
+    </div>
+
+    </div>
+
+</div>
+
+
 
 
 <div class="container captured" style="width: 450px">
@@ -99,6 +121,9 @@
     </div>
 
 </div>
+
+
+
 
 
 <script src="engine_me.js"></script>

@@ -5,6 +5,8 @@
   align-items: center;
   text-align: center;
   margin: auto;
+  margin-top: 20%;
+  position: relative;
 }
 
 
@@ -30,5 +32,32 @@ margin-left: -250px;
   transition: all 0.4s ease 0s;
 
 
+
+}
+
+
+.Chesstatus{
+
+float:right;
+height: 450px;
+margin-top:30%;
+
+}
+
+.container .row{
+
+margin-left: 10%;
+
+}
+
+img.captured{
+
+width :40px;
+
+}
+
+header{
+
+margin-left: 20%;
 
 }
