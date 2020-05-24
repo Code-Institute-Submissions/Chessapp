@@ -24,16 +24,19 @@ margin-top: 80px;
 
 /**Add Back Ground images **/
 .background-img{
-    width: 100%;
-    height: 100%;
 /* Location of the image */
-  background: url(../img/stockfish/two-white-and-black-chess-knights-facing-each-other-on-chess-839428.jpg);
-    background-size: 100% auto;
-
+    height: 100%;
+  background: url(../img/stockfish/black-black-and-white-blur-board-game-112854.jpg);
+    background-size: cover;
 
 }
+.body-container{
+width: 100%;
+padding: 0;
+margin: 0;
 
-/** Do some CSS to the background **/
+}
+/** Do some CSS to the board **/
 
 #myboard{
   display: flex;
@@ -42,61 +45,21 @@ margin-top: 80px;
   align-items: center;
   text-align: center;
   margin: auto;
-  position: relative;
-}
-
-
-
-
-.sidebar {
-  position: absolute;
-  top: 0;
-  width: 250px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-
-.sidebar-wrap{
-margin-left: -250px;
-  left: 250px;
-  width: 250px;
-  background: #CCCCCC;
-  position: absolute;
-  height: 100%;
-  overflow-y: auto;
-  z-index: 1000;
-  transition: all 0.4s ease 0s;
-
-
+  padding-bottom :20%;
 
 }
 
 
-.Chesstatus{
-
-float:right;
-height: 450px;
-margin-top:30%;
-
-}
-
-.container .row{
-
-margin-left: 10%;
-
-}
+/**piecces top ***/
 
 img.captured{
-
 width :40px;
-
 }
 
 
-.container.chessboardandstatus{
-height: 450px;
-width: 450px;
+.menuitem a i {
+    padding-top: 22px;
 
+    color: #101111e3;
+    font-size: 26px;
 }

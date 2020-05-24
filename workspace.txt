@@ -97,8 +97,63 @@
 
 
 
-<script src="engine_me.js"></script>
-<script src="js/myboard_jquery.js"></script>
 
 
 
+
+
+
+
+
+.sidebar {
+  position: absolute;
+  top: 0;
+  width: 250px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+.sidebar-wrap{
+margin-left: -250px;
+  left: 250px;
+  width: 250px;
+  background: #CCCCCC;
+  position: absolute;
+  height: 100%;
+  overflow-y: auto;
+  z-index: 1000;
+  transition: all 0.4s ease 0s;
+
+
+
+}
+
+
+.Chesstatus{
+
+float:right;
+height: 450px;
+margin-top:30%;
+
+}
+
+.container .row{
+
+margin-left: 10%;
+
+}
+
+img.captured{
+
+width :40px;
+
+}
+
+
+.container.chessboardandstatus{
+height: 450px;
+width: 450px;
+
+}
