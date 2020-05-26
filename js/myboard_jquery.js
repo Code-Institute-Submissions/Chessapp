@@ -28,13 +28,20 @@ $(".colouroptions a").click( function() {
         stockfish_colour="b";
         console.log("playercolour:"+player_colour+"stockfishcolour:"+stockfish_colour)
 
+
         newgame();
+        $(".pieces_bottom i").css({ "color" : "#e4f1f1fb"});
+        $(".pieces_top i").css({ "color" : "#101111e3"});    
     
     }else{
         player_colour="b";
         stockfish_colour="w";
         console.log("playercolour:"+player_colour+"stockfishcolour:"+stockfish_colour)
         newgame("black");
+
+        $(".pieces_bottom i").css({ "color" : "#101111e3"});
+        $(".pieces_top i").css({ "color" : "#e4f1f1fb"});    
+
     }
 
 
@@ -46,7 +53,11 @@ $("#newgame").click(function(){
     console.log("pressed new button")
             player_colour="w";
         stockfish_colour="b";
+         
     newgame("white");
+
+     $(".pieces_bottom i").css({ "color" : "#e4f1f1fb"});
+        $(".pieces_top i").css({ "color" : "#101111e3"});    
 
 })
 
@@ -54,4 +65,5 @@ $("#newgame").click(function(){
 /// Jquery and Js to add captired pieces to keep track : code from https://github.com/jhlywa/chess.js/issues/82
 
 
+// change user colour if the game is black:
 

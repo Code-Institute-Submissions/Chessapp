@@ -60,7 +60,7 @@ padding-bottom: 12px;
 
 
 .pieces_top i {
-    padding-top: 50px;
+    padding-top: 20px;
     margin-left :10px;
     color: #101111e3;
     font-size: 26px;
@@ -68,7 +68,7 @@ padding-bottom: 12px;
 
 
 .pieces_bottom i {
-    padding-top: 50px;
+    padding-top: 20px;
     margin-left :10px;
     color: #e4f1f1fb;
     font-size: 26px;
@@ -81,9 +81,11 @@ padding-bottom: 12px;
     height: 0;
 
 }
-button#newgamebutton{
-    height:40px;
 
 
-
+.Chesstatus{
+    padding-left: 70%;
+    font-size: 20px;
+    
 }
+
