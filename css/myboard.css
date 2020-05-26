@@ -31,10 +31,18 @@ margin-top: 80px;
     background-size: cover;
 
 }
+#status{
+
+padding-top:77px;
+padding-left: 30%
+
+}
+
 .body-container{
 width: 100%;
 padding: 0;
 margin: 0;
+font-size:32px;
 
 }
 /** Do some CSS to the board **/
@@ -46,7 +54,7 @@ margin: 0;
   align-items: center;
   text-align: center;
   margin: auto;
-  padding-bottom :20%;
+  padding-bottom :17%;
 
 }
 
@@ -64,6 +72,7 @@ padding-bottom: 12px;
     margin-left :10px;
     color: #101111e3;
     font-size: 26px;
+    font-weight: 900;
 }
 
 
@@ -72,18 +81,24 @@ padding-bottom: 12px;
     margin-left :10px;
     color: #e4f1f1fb;
     font-size: 26px;
-
+    font-weight: 900;
 }
 
 
 .Chessoptions{
-    padding-left: 42%;
+    padding-left: 39%;
     height: 0;
 
 }
 .Chessoptions button{
 width:155px;
 height:50px;
+font-size:12px;
+}
+
+.Chessoptions a{
+
+    width:155px;
 font-size:12px;
 }
 
