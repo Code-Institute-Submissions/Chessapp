@@ -3,9 +3,12 @@
 // access skill level elements:
 // default value
 
-$('#skilllevel').on('change', function () {
+
+
+
+$(".skillptions a").click(function () {
     
-    skill_level= this.value;
+    skill_level= $(this).text();
     
     console.log("skill level changed:"+skill_level)
 

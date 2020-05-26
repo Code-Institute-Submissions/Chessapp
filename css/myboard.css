@@ -19,6 +19,9 @@ margin-top: 80px;
 .header-RP{
 
     padding-left: 20%;
+
+  background: url(../img/stockfish/black-black-and-white-blur-board-game-112854.jpg);
+    background-size: cover;
 }
 
 
@@ -59,7 +62,7 @@ padding-bottom: 12px;
 
 
 .pieces_top i {
-    padding-top: 25px;
+    padding-top: 50px;
     margin-left :10px;
     color: #101111e3;
     font-size: 26px;
@@ -67,13 +70,22 @@ padding-bottom: 12px;
 
 
 .pieces_bottom i {
-    padding-top: 25px;
+    padding-top: 50px;
     margin-left :10px;
     color: #e4f1f1fb;
     font-size: 26px;
 
+}
 
-.player{
 
-    display: block;
+.Chessoptions{
+    padding-left: 35%;
+    height: 0;
+
+}
+button#newgamebutton{
+    height:40px;
+
+
+
 }
