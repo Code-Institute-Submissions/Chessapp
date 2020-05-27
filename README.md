@@ -35,11 +35,12 @@ Initial wireframe used for developing a prototype ,which was later discarded due
 
 To highlight Black and White Chess pieces used light colours throughout with large font weights
 
-+Features Added: 
++ Features Added: 
     - Allow Users to See Captured pieces 
     - Switch Sides
     - Buttons to start new games.
     - Choose difficulty settings , by changing depth search settings for stockfish
+    - A simple console.log of Engine response for Game info
 
 + Features Not Implemented or nice to Haves :
     - Time Settings
@@ -47,6 +48,7 @@ To highlight Black and White Chess pieces used light colours throughout with lar
     - Highlighting Checks 
     - Move History and replay to previous moves
     - Cross Compatibility - currently uses drag to move chess pieces : compatabile only on Desktop!
+    - Pop-ups when in check or mated or stalemate
 
 
 ## Technologies :
