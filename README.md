@@ -2,7 +2,7 @@
 # Play against Stockfish (Elo:3000+) on your browser :smiley:  !
 
 
-The project is an attempt to allow user to play chess against the strongest chess-engine in the world  on their browser.
+The project as part of Module2:Code Institute is an attempt to allow user to play chess against the strongest chess-engine in the world  on their browser.
 
 Built on top of [Chess.js](https://github.com/jhlywa/chess.js)
 (Rules for Chess),[chessboard.js](https://chessboardjs.com/) (chessboard :css+html+jquery) 
