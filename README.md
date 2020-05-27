@@ -30,9 +30,11 @@ Initial wireframe used for developing a prototype ,which was later discarded due
 
 ## User Stories
 
-    > I can play a quick game on my browser against an awesome engine -no sign up , no login required
-    > 
+> "*I can play a quick game on my browser against an awesome engine -no sign up , no login required* "
 
+> "*It is impressive , how quickly stockfish is possible to play such quick moves -awesome responsiveness* "
+
+> "*I am an avid-chess fan , awesome idea , would be good to evaluate specific positions or lines youre intrested in*"
 
 
 
