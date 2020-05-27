@@ -1,5 +1,5 @@
 > ![](https://github.com/rbnphlp/Chessapp/blob/master/img/stockfish/Chess_responsiveness.png)	
-# Play against Stockifish on your browser 
+# Play against Stockfish on your browser 
 
 
 The project is an attempt to play Chess against a Chess-engine on the browser.Built on top of [Chess.js](https://github.com/jhlywa/chess.js)
@@ -49,6 +49,7 @@ To highlight Black and White Chess pieces used light colours throughout with lar
     - Move History and replay to previous moves
     - Cross Compatibility - currently uses drag to move chess pieces : compatabile only on Desktop!
     - Pop-ups when in check or mated or stalemate
+    - Promotion to selection of pieces (currently queen only)
 
 
 ## Technologies :
@@ -69,6 +70,34 @@ To highlight Black and White Chess pieces used light colours throughout with lar
 + Chessboard.js
 
   
+## Testing :
+
+
+
++ Header & Navigation bar :
+     - Href links to correct elements -checked and working
+     - Nav Bar correcly alligned for Desktop Version only ! 
+
++ Body  :
+     - Loaded image links in various browsers (Firefox and Chrome)
+     - Tested if Jquery appropriately showing captured pieces for White & Black
+     
++ Game Logic :
+    - Engine response for various chess openings from user 
+    - Queen Promotion
+    - Variety of game combinations tried :
+        
+            New game -> User Plays Game -> Switch to Black 
+            New Game -> Switch to Black
+            New Game -> Switch to Black -> Switch to White -> New Game
+            
+     
++ Full web page checks :
+     - Tested all of the below on Mobile (iphone 6/7/8) ,desktop (firefox and chrome) and Ipad screens
+     - Ran the web page for any html/css errors on https://validator.w3.org/
+     
+
+
 
 
 
