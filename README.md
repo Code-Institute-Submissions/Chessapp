@@ -32,9 +32,45 @@ Initial wireframe used for developing a prototype ,which was later discarded due
 
 > "*I can play a quick game on my browser against an awesome engine -no sign up , no login required* "
 
-> "*It is impressive , how quickly stockfish is possible to play such quick moves -awesome responsiveness* "
+> "*It is impressive , how quickly stockfish is possible to play such quick and good moves -awesome responsiveness* "
 
 > "*I am an avid-chess fan , awesome idea , would be good to evaluate specific positions or lines youre intrested in*"
+
+
+## Design 
+
+To highlight Black and White Chess pieces used light colours throughout with large font weights
+
+Features Added: 
+ + Allow Users to See Captured pieces 
+ + Switch Sides
+ + Buttons to start new games.
+ + Choose difficulty settings , by changing depth search settings for stockfish
+
+
+
+## Technologies :
+
+
+### Languages:
+
++ HTML
++ CSS
++ Javascript
+    
+### Libraries /Frameworks:
++ Boostrap
++ Jquery
++ Font-Awesome
++ StockFish.js
++ Chess.js
++ Chessboard.js
+
+  
+
+
+
+
 
 
 
