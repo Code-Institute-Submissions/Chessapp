@@ -20,12 +20,6 @@ Initial wireframe used for developing a prototype ,which was later discarded due
 
 > ![](https://github.com/rbnphlp/Chessapp/blob/master/img/stockfish/Initialwireframe_chess.png)	
 
-+ Features Not Implemented or nice to Haves :
-    - Time Settings
-    - Highlighting Legal Moves
-    - Highlighting Checks 
-    - Move History and replay to previous moves
-    - Cross Compatibility - currently uses drag to move chess pieces : compatabile only on Desktop!
     
 
 ## User Stories
@@ -47,6 +41,12 @@ Features Added:
  + Buttons to start new games.
  + Choose difficulty settings , by changing depth search settings for stockfish
 
++ Features Not Implemented or nice to Haves :
+    - Time Settings
+    - Highlighting Legal Moves
+    - Highlighting Checks 
+    - Move History and replay to previous moves
+    - Cross Compatibility - currently uses drag to move chess pieces : compatabile only on Desktop!
 
 
 ## Technologies :
