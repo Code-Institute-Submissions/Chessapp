@@ -35,11 +35,11 @@ Initial wireframe used for developing a prototype ,which was later discarded due
 
 To highlight Black and White Chess pieces used light colours throughout with large font weights
 
-Features Added: 
- + Allow Users to See Captured pieces 
- + Switch Sides
- + Buttons to start new games.
- + Choose difficulty settings , by changing depth search settings for stockfish
++Features Added: 
+    - Allow Users to See Captured pieces 
+    - Switch Sides
+    - Buttons to start new games.
+    - Choose difficulty settings , by changing depth search settings for stockfish
 
 + Features Not Implemented or nice to Haves :
     - Time Settings
