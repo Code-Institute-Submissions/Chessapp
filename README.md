@@ -1,6 +1,5 @@
 > ![](https://github.com/rbnphlp/Chessapp/blob/master/img/stockfish/Chess_responsiveness.png)	
-# Play against Stockfish (Elo:3000+) on your browser
-# Good luck :smiley:  !
+# Play against Stockfish (Elo:3000+) on your browser :smiley:  !
 
 
 The project is an attempt to play Chess against a Chess-engine on the browser.Built on top of [Chess.js](https://github.com/jhlywa/chess.js)
