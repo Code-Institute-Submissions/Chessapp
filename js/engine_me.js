@@ -29,7 +29,7 @@ myboard = new ChessBoard('myboard', config);
 //** Define  functions tosend  messages and recieve messages as well as statuses from the engine */
 const  chess_game =Chess();
 
- const stockfish_engine=new Worker('stockfish.js');
+ const stockfish_engine=new Worker('js/stockfish.js');
 
 
  function Send_command(cmd) {
