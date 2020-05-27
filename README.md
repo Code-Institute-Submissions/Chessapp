@@ -9,7 +9,7 @@ Built on top of [Chess.js](https://github.com/jhlywa/chess.js)
 and [Stockfish.js](https://github.com/nmrugg/stockfish.js) (Chess engine).
 
 
-Behind the scenes, commands sendaccording to the UCI Chess protocol to Stockfish engine (stockfish.js and sotckfish.wasm.js) , and parsing Stockfish responses , the game is then glued together with chess.js for legalities and rules , and chess board.js for UI.
+Behind the scenes, commands send according to the UCI Chess protocol to Stockfish engine (stockfish.js and sotckfish.wasm.js) , and parsing Stockfish responses , the game is then glued together with chess.js for legalities and rules , and chess board.js for UI.
 
 ## UX Design 
 
