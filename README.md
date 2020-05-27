@@ -83,7 +83,7 @@ To highlight Black and White Chess pieces used light colours throughout with lar
      - Nav Bar correcly alligned for Desktop Version only ! 
 
 + Body  :
-     - Loaded image links in various browsers (Firefox and Chrome)
+     - Loaded image links in various browsers (Safari,Firefox and Chrome)
      - Tested if Jquery appropriately showing captured pieces for White & Black
      
 + Game Logic :
