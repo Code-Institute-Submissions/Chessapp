@@ -1,4 +1,4 @@
-# Play against Stockifish-world's strongest chess engine on your broweser 
+# Play against Stockifish on your broweser 
 
 
 ## UX Design 
@@ -17,7 +17,7 @@ and Stockfish.js(Chess engine) .
 
 Initial wireframe used for developing a prototype ,which was later discarded due to time restrictions:
 
-> ![](https://github.com/rbnphlp/Chessapp/tree/master/img/stockfish/Initialwireframe_chess.png)	
+> ![wireframe](https://github.com/rbnphlp/Chessapp/tree/master/img/stockfish/Initialwireframe_chess.png)	
 
 
 
