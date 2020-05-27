@@ -1,12 +1,11 @@
 # Play against Stockifish on your browser 
 
 
-## UX Design 
-
 The project is an attempt to play Chess against a Chess-engine on the browser.Built on top of Chess.js(Rules for Chess),chessboard.js(chessboard :css+html+jquery) 
-and Stockfish.js(Chess engine) .
+and Stockfish.js(Chess engine).
 
 
+## UX Design 
 
 + The Skeleton Layout:
 
