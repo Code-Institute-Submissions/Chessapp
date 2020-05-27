@@ -98,7 +98,7 @@ To highlight Black and White Chess pieces used light colours throughout with lar
             
      
 + Full web page checks : 
-     - Tested all of the above on desktop (firefox and chrome) - *Other Screen sizes not implemented
+     - Tested all of the above on desktop (firefox and chrome) - *Other Screen sizes not implemented*
      - Ran the web page for any html/css errors on https://validator.w3.org/
      
 ### Bug Fixes (Open & Closed) :
