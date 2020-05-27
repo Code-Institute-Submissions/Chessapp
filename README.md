@@ -17,7 +17,7 @@ and Stockfish.js(Chess engine) .
 
 Initial wireframe used for developing a prototype ,which was later discarded due to time restrictions:
 
-> ![wireframe](https://github.com/rbnphlp/Chessapp/tree/master/img/stockfish/Initialwireframe_chess.png)	
+> ![](https://github.com/rbnphlp/Chessapp/blob/master/img/stockfish/Initialwireframe_chess.png)	
 
 
 
