@@ -25,6 +25,13 @@ Initial wireframe used for developing a prototype ,which was later discarded due
     - Highlighting Legal Moves
     - Highlighting Checks 
     - Move History and replay to previous moves
+    - Cross Compatibility - currently uses drag to move chess pieces : compatabile only on Desktop!
+    
+
+## User Stories
+
+    > I can play a quick game on my browser against an awesome engine -no sign up , no login required
+    > 
 
 
 
