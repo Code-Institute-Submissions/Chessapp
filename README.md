@@ -1,4 +1,4 @@
-> ![](https://github.com/rbnphlp/Chessapp/blob/master/img/stockfish/stockfish%20resized.png)	
+> ![](https://github.com/rbnphlp/Chessapp/blob/master/img/stockfish/Chess_responsiveness.png)	
 # Play against Stockifish on your browser 
 
 
