@@ -101,8 +101,17 @@ To highlight Black and White Chess pieces used light colours throughout with lar
      - Tested all of the above on desktop (firefox and chrome) - *Other Screen sizes not implemented
      - Ran the web page for any html/css errors on https://validator.w3.org/
      
+### Bug Fixes (Open & Closed) :
 
 
+| Bug-Location      | Bug-Type  | Bug-Status|
+| ------------- |:-------------:| ---------:|
+|  index.html   |  html-validation error | Fixed |
+|  index.html   |  html-validation error   |  Fixed |
+|  engine_me.js |   Black Pieces -game logic |  Fixed |
+|  engine_me.js |   New game -game logic |  Fixed |
+|  myboard_jquery.js | Wrong pieces rendered |  Fixed |
+|   css &html |   Resposniveness -Screen moving when dragging not on Desktop Devices  |  Open |
 
 ## Deployment
 
