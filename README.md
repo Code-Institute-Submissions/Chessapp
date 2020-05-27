@@ -19,6 +19,13 @@ Initial wireframe used for developing a prototype ,which was later discarded due
 
 > ![](https://github.com/rbnphlp/Chessapp/blob/master/img/stockfish/Initialwireframe_chess.png)	
 
++ Features Not Implemented or nice to Haves :
+    - Time Settings
+    - Highlighting Legal Moves
+    - Highlighting Checks 
+    - Move History and replay to previous moves
+
+
 
 
 
