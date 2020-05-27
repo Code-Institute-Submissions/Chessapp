@@ -3,8 +3,8 @@
 
 
 The project is an attempt to play Chess against a Chess-engine on the browser.Built on top of [Chess.js](https://github.com/jhlywa/chess.js)
-(Rules for Chess),[chessboard.js](https://chessboardjs.com/)(chessboard :css+html+jquery) 
-and [Stockfish.js](https://github.com/nmrugg/stockfish.js)(Chess engine).Along with sending commands according to the UCI Chess protocol, and parsing Stockfish responses , the game is then glued together with chess.js for legalities and rules , and chess board.js for UI
+(Rules for Chess),[chessboard.js](https://chessboardjs.com/) (chessboard :css+html+jquery) 
+and [Stockfish.js](https://github.com/nmrugg/stockfish.js) (Chess engine). Along with sending commands according to the UCI Chess protocol, and parsing Stockfish responses , the game is then glued together with chess.js for legalities and rules , and chess board.js for UI
 .
 
 ## UX Design 
@@ -93,10 +93,25 @@ To highlight Black and White Chess pieces used light colours throughout with lar
             New Game -> Switch to Black -> Switch to White -> New Game
             
      
-+ Full web page checks :
-     - Tested all of the below on Mobile (iphone 6/7/8) ,desktop (firefox and chrome) and Ipad screens
++ Full web page checks : 
+     - Tested all of the above on desktop (firefox and chrome) - *Other Screen sizes not implemented
      - Ran the web page for any html/css errors on https://validator.w3.org/
      
+
+
+
+## Deployment
+
+The Web pages was deployed through following :
++ Set up  a index html and css folder and all the associated iages  in the master branch  folder 
++ Setup github pages through https://help.github.com/en/enterprise/2.14/user/articles/configuring-a-publishing-source-for-     github-pages
+
+
+
+
+## Acknowledgements
+ Thanks for Code institute and their awesome tutor support team along with my mentor :)
+ 
 
 
 
