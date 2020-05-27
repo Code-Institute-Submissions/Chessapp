@@ -1,4 +1,4 @@
-# Play against Stockifish on your broweser 
+# Play against Stockifish on your browser 
 
 
 ## UX Design 
