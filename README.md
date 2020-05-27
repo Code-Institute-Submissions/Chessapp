@@ -4,8 +4,8 @@
 
 The project is an attempt to play Chess against a Chess-engine on the browser.Built on top of [Chess.js](https://github.com/jhlywa/chess.js)
 (Rules for Chess),[chessboard.js](https://chessboardjs.com/)(chessboard :css+html+jquery) 
-and [Stockfish.js](https://github.com/nmrugg/stockfish.js)(Chess engine).
-
+and [Stockfish.js](https://github.com/nmrugg/stockfish.js)(Chess engine).Along with sending commands according to the UCI Chess protocol, and parsing Stockfish responses , the game is then glued together with chess.js for legalities and rules , and chess board.js for UI
+.
 
 ## UX Design 
 
